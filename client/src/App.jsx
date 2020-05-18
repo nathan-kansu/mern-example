@@ -19,7 +19,8 @@ const Container = styled.div`
 `;
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const token = localStorage.getItem("token");
+  const [isLoggedIn, setIsLoggedIn] = useState(!!token);
   const [state, dispatch] = useReducer(categoriesReducer, { categories: [] });
   const loggedInState = { isLoggedIn, setIsLoggedIn };
   const categoriesState = { state, dispatch };

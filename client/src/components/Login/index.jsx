@@ -65,11 +65,11 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     login(email, password)
-      .then(({ status }) => {
-        if (status === 200) {
-          setIsLoggedIn(true);
-          redirectToHome();
-        }
+      .then(({ data }) => {
+        const { token } = data;
+        localStorage.setItem("token", token);
+        setIsLoggedIn(true);
+        redirectToHome();
       })
       .catch(({ response }) => {
         const { status } = response;
