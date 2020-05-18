@@ -7,7 +7,9 @@ const compression = require("compression");
 const server = http.createServer(app);
 const path = require("path");
 const io = socketIo(server);
+const passport = require("passport");
 
+require("./config/passport.js");
 require("dotenv").config();
 
 const port = process.env.PORT || 3000;
@@ -19,7 +21,11 @@ app.use(compression());
 app.use(cors());
 app.use(express.json());
 app.use(express.static(clientBuildFolderPath));
-app.use("/api/categories", categoriesRouter);
+app.use(
+  "/api/categories",
+  passport.authenticate("jwt", { session: false }),
+  categoriesRouter
+);
 app.use("/api/users", usersRouter);
 
 app.set("socketio", io);
