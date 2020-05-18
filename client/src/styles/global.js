@@ -12,5 +12,11 @@ const GlobalStyle = createGlobalStyle`
   theme,
 }) => theme.color.orange});
   }
+
+  button {
+      border: 0;
+      cursor: pointer;
+      padding: 0;
+  }
 `;
 export default GlobalStyle;
