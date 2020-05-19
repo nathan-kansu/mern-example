@@ -32,13 +32,16 @@ const Home = () => {
       dispatch({ type: CATEGORIES_DELETE, payload: category });
     });
 
-    socket.on("category:update", ({ _id, label }) =>
-      dispatch({ type: CATEGORIES_UPDATE, payload: { _id, label } })
-    );
-
-    socket.on("category:created", ({ _id, label, parent }) => {
-      dispatch({ type: CATEGORIES_CREATE, payload: { _id, label, parent } });
+    socket.on("category:update", ({ previousLabel, updatedLabel }) => {
+      dispatch({
+        type: CATEGORIES_UPDATE,
+        payload: { previousLabel, updatedLabel },
+      });
     });
+
+    socket.on("category:created", ({ _id, label, parent }) =>
+      dispatch({ type: CATEGORIES_CREATE, payload: { _id, label, parent } })
+    );
   }, [dispatch]);
 
   useEffect(() => {

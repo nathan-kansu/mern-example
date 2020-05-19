@@ -26,23 +26,32 @@ router.post("/", (req, res) => {
   });
 });
 
-router.put("/:categoryId", (req, res) => {
+router.put("/:categoryId", async (req, res) => {
   const io = req.app.get("socketio");
   const { categoryId } = req.params;
   const { category } = req.body;
 
-  Category.findOneAndUpdate(
+  const parent = await Category.findOneAndUpdate(
     { _id: categoryId },
     {
       label: category,
     }
-  ).then((result) => {
-    io.emit("category:update", { _id: categoryId, label: category });
-    res.send(result);
-  });
+  );
+
+  const { label } = parent;
+
+  Category.updateMany({ parent: label }, { $set: { parent: category } }).then(
+    (result) => {
+      io.emit("category:update", {
+        previousLabel: label,
+        updatedLabel: category,
+      });
+      res.send(result);
+    }
+  );
 });
 
-router.delete("/:category", async (req, res) => {
+router.delete("/:category", (req, res) => {
   const io = req.app.get("socketio");
   const { category } = req.params;
 

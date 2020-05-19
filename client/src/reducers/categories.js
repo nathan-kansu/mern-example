@@ -19,18 +19,24 @@ const categoriesReducer = (state, { payload, type }) => {
     case CATEGORIES_GET:
       return { categories: [...state.categories, ...payload] };
     case CATEGORIES_UPDATE:
-      const { _id, label } = payload;
-
+      const { previousLabel, updatedLabel } = payload;
       return {
         categories: state.categories.map((category) => {
-          if (category._id !== _id) {
-            return category;
+          if (category.label === previousLabel) {
+            return {
+              ...category,
+              label: updatedLabel,
+            };
           }
 
-          return {
-            ...category,
-            label,
-          };
+          if (category.parent === previousLabel) {
+            return {
+              ...category,
+              parent: updatedLabel,
+            };
+          }
+
+          return category;
         }),
       };
 
