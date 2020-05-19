@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "5ebfbd0a1bb84b2dd9853e3a"
+  },
+  "username": "Larry Electronic",
+  "email": "larry@foo.com",
+  "password": "$2b$10$E8K1nJUGc4kX81toP4ot8./pVfDqP7OEDjeYlUqfEl5APXhB5odFa"
+},{
+  "_id": {
+    "$oid": "5ebfbe361bb84b2dd9853e41"
+  },
+  "username": "Karen Penguin",
+  "email": "karen@foo.com",
+  "password": "$2b$10$b3XEeAfXVY31FO6M6cFkoeLOWyqdDn531oO6384SJg1SzPn7TWmDW"
+}]

@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "5ebfbda31bb84b2dd9853e3b"
+  },
+  "label": "Electronics",
+  "parent": null
+},{
+  "_id": {
+    "$oid": "5ebfbdab1bb84b2dd9853e3c"
+  },
+  "label": "Books",
+  "parent": null
+},{
+  "_id": {
+    "$oid": "5ebfbdb51bb84b2dd9853e3d"
+  },
+  "label": "Sports",
+  "parent": null
+},{
+  "_id": {
+    "$oid": "5ebfbdbe1bb84b2dd9853e3e"
+  },
+  "label": "Cats",
+  "parent": null
+},{
+  "_id": {
+    "$oid": "5ebfbdc71bb84b2dd9853e3f"
+  },
+  "label": "Wizards",
+  "parent": null
+},{
+  "_id": {
+    "$oid": "5ebfbdce1bb84b2dd9853e40"
+  },
+  "label": "Fruits",
+  "parent": null
+}]
