@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import Container from "./Container";
 import Heading from "./Heading";
 import LoggedInContext from "../contexts/LoggedIn";
+import CategoriesContext from "../contexts/Categories";
+import { CATEGORIES_CLEAR } from "../reducers/categories";
 import { ReactComponent as LogoIcon } from "../assets/images/logo.svg";
 import { ReactComponent as LogoutIcon } from "../assets/images/logout.svg";
 
@@ -40,10 +42,12 @@ const StyledHeader = styled.header`
 
 const Header = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(LoggedInContext);
+  const { dispatch } = useContext(CategoriesContext);
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
+    dispatch({ type: CATEGORIES_CLEAR });
   };
 
   return (
