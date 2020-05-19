@@ -9,13 +9,13 @@ const path = require("path");
 const io = socketIo(server);
 const passport = require("passport");
 
-require("./config/passport.js");
+require("./server/config/passport.js");
 require("dotenv").config();
 
 const port = process.env.PORT || 3000;
 const clientBuildFolderPath = path.join(__dirname, "..", "client", "build");
-const categoriesRouter = require("./routes/categories");
-const usersRouter = require("./routes/users");
+const categoriesRouter = require("./server/routes/categories");
+const usersRouter = require("./server/routes/users");
 
 app.use(compression());
 app.use(cors());
