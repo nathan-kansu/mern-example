@@ -12,7 +12,9 @@ const categoriesReducer = (state, { payload, type }) => {
       return { categories: [...state.categories, payload] };
     case CATEGORIES_DELETE:
       return {
-        categories: state.categories.filter(({ _id }) => _id !== payload),
+        categories: state.categories.filter(
+          ({ label, parent }) => (label || parent) !== payload
+        ),
       };
     case CATEGORIES_GET:
       return { categories: [...state.categories, ...payload] };

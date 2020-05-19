@@ -12,7 +12,8 @@ export const createCategory = (label, parent) =>
 export const getCategories = () =>
   axios.get("api/categories").then(({ data }) => data);
 
-export const deleteCategories = (id) => axios.delete(`api/categories/${id}`);
+export const deleteCategories = (category) =>
+  axios.delete(`api/categories/${category}`);
 
 export const updateCategory = (id, category) =>
   axios.put(`api/categories/${id}`, { category });

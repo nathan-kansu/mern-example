@@ -28,8 +28,8 @@ const Home = () => {
     const socket = io.connect("http://localhost:9000");
 
     socket.on("category:delete", (data) => {
-      const { id } = data;
-      dispatch({ type: CATEGORIES_DELETE, payload: id });
+      const { category } = data;
+      dispatch({ type: CATEGORIES_DELETE, payload: category });
     });
 
     socket.on("category:update", ({ _id, label }) =>

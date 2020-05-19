@@ -33,7 +33,9 @@ const Categories = ({ parentCategory }) => {
     createCategory(newCategory, parentCategory);
   };
 
-  const handleDelete = (id) => deleteCategories(id);
+  const handleDelete = (category) => {
+    deleteCategories(category);
+  };
   const handleUpdate = (id, category) => updateCategory(id, category);
 
   return (

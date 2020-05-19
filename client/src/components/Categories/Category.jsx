@@ -97,7 +97,7 @@ const Category = ({
             <Menu
               handleAdd={() => handleAdd()}
               hasChildren={hasChildren}
-              handleDelete={() => handleDelete(id)}
+              handleDelete={() => handleDelete(text)}
               handleEdit={() => setIsEditing(true)}
             />
           )}

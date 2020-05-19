@@ -42,13 +42,15 @@ router.put("/:categoryId", (req, res) => {
   });
 });
 
-router.delete("/:categoryId", (req, res) => {
+router.delete("/:category", async (req, res) => {
   const io = req.app.get("socketio");
-  const { categoryId } = req.params;
+  const { category } = req.params;
 
-  Category.findOneAndDelete().then((result) => {
-    io.emit("category:delete", { id: categoryId });
-    res.send(result);
+  Category.findOneAndDelete({ label: category }).then(() => {
+    Category.deleteMany({ parent: category }).then((result) => {
+      io.emit("category:delete", { category });
+      res.send(result);
+    });
   });
 });
 
