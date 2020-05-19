@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import styled from "styled-components";
 import io from "socket.io-client";
 import Heading from "../Heading";
 import Loading from "../Loading";
@@ -11,6 +12,14 @@ import {
   CATEGORIES_UPDATE,
 } from "../../reducers/categories";
 import CategoriesContext from "../../contexts/Categories";
+
+const LoadingContainer = styled.div`
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+`;
 
 const Home = () => {
   const { state, dispatch } = useContext(CategoriesContext);
@@ -44,7 +53,9 @@ const Home = () => {
     <>
       <Heading>Categories</Heading>
       {!state.categories.length ? (
-        <Loading />
+        <LoadingContainer>
+          <Loading />
+        </LoadingContainer>
       ) : (
         <Categories parentCategory={null} />
       )}

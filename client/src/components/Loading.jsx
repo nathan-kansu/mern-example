@@ -1,15 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Icon } from "../assets/images/loading.svg";
+import { ReactComponent as LoadingIcon } from "../assets/images/loading.svg";
 
-const StyledDiv = styled.div`
+const Container = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+`;
+
+const StyledLoadingIcon = styled(LoadingIcon)`
   height: 50px;
   width: 50px;
 `;
 
 const Loading = () => (
-  <StyledDiv>
-    <Icon />
-  </StyledDiv>
+  <Container>
+    <StyledLoadingIcon />
+  </Container>
 );
 export default Loading;
