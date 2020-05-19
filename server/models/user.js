@@ -26,7 +26,6 @@ const UserSchema = mongoose.Schema({
 UserSchema.methods.isValidPassword = async function (password) {
   const user = this;
   const hash = await bcrypt.hash(password, 10);
-  console.log({ hash });
   const compare = await bcrypt.compare(password, user.password);
   return compare;
 };
